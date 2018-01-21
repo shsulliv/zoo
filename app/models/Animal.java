@@ -12,6 +12,7 @@ import java.util.UUID;
 @Table(name = "animals")
 public final class Animal extends Model {
   @Id public UUID id;
+
   @Constraints.Required public String name;
   @Constraints.Required public Species species;
 

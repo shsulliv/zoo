@@ -14,8 +14,10 @@ public final class Keeper extends Model {
   @Id public UUID id;
 
   @Constraints.Required public String name;
+  @Constraints.Required public String type;
 
-  public Keeper(String name) {
+  public Keeper(String name, String type) {
     this.name = name;
+    this.type = type;
   }
 }

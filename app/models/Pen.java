@@ -15,11 +15,15 @@ public final class Pen extends Model {
 
   @Constraints.Required public String name;
   @Constraints.Required public String type;
-  @Constraints.Required public String size;
+  @Constraints.Required public double landArea;
+  @Constraints.Required public double waterArea;
+  @Constraints.Required public double airArea;
 
-  public Pen(String name, String type, String size) {
+  public Pen(String name, String type, double landArea, double waterArea, double airArea) {
     this.name = name;
     this.type = type;
-    this.size = size;
+    this.landArea = landArea;
+    this.waterArea = waterArea;
+    this.airArea = airArea;
   }
 }
