@@ -1,6 +1,16 @@
-@()
+@(pens: List[Pen])
 
 @main("Pens") {
     <h1>Pens</h1>
-    <p>List of Pens goes here.</p>
+    <ol>
+    @for(p <- pens) {
+        <li id="@p.id">
+            <span>@p.penType</span>
+            <span>@p.penName</span>
+            <span>@p.landArea m2</span>
+            <span>@p.waterArea m2</span>
+            <span>@p.airArea m2</span>
+        </li>
+    }
+    </ol>
 }
