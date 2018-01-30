@@ -21,9 +21,8 @@ public final class Animal extends Model {
   @Constraints.Required
   public Pen pen;
 
-  public Animal(String name, Species species, Pen pen) {
+  public Animal(String name, Species species) {
     this.name = name;
     this.species = species;
-    this.pen = pen;
   }
 }

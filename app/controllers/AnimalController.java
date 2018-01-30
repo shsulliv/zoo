@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Pen;
 import models.Species;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -31,14 +30,7 @@ public class AnimalController extends Controller {
     List<Species> species = new ArrayList<>();
     species.add(a);
     species.add(b);
-
-    //    List<Pen> pens = Ebean.find(Pen.class).findList();
-    Pen c = new Pen("Pen C", "Hybrid", 20, 20, 0);
-    Pen d = new Pen("Pen D", "land", 20, 0, 0);
-    List<Pen> pens = new ArrayList<>();
-    pens.add(c);
-    pens.add(d);
-    return ok(views.html.animals.form.render(species, pens));
+    return ok(views.html.animals.form.render(species));
   }
 
   public Result create() {
