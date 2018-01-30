@@ -1,12 +1,13 @@
 @()
 
-@main("New") {
-    <h1>Add a New Keeper</h1>
-    <form action="">
-        <div>
-            <label for="animalName">Name:</label>
-            <input type="text" animalName="keeper_name">
-        </div>
-        <input type="submit">
-    </form>
-}
+    @main("New") {
+        <h1>Add a New Keeper</h1>
+        @helper.form(action = routes.KeeperController.create()) {
+            @helper.CSRF.formField
+            <div>
+                <label for="keeper-name">Name:</label>
+                <input type="text" name="keeper_name">
+            </div>
+            <input type="submit">
+        }
+    }
