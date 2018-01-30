@@ -1,6 +1,12 @@
-@()
+@(keepers: List[Keeper])
 
 @main("Keepers") {
     <h1>Keepers</h1>
-    <p>List of Keepers goes here.</p>
+    <ol>
+    @for(k <- keepers) {
+        <li id="@k.id">
+            <span>@k.keeperName</span>
+        </li>
+    }
+    </ol>
 }
