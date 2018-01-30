@@ -1,6 +1,13 @@
-@()
+@(animals: List[Animal])
 
-@main("Animals") {
-    <h1>Animals</h1>
-    <p>List of Animals goes here.</p>
-}
+    @main("Animals") {
+        <h1>Animals</h1>
+        <ol>
+        @for(a <- animals) {
+            <li id="@a.id">
+                <span>@a.species</span>
+                <span>@a.animalName</span>
+            </li>
+        }
+        </ol>
+    }

@@ -9,13 +9,16 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.UUID;
 
 public final class AnimalController extends Controller {
   @Inject private FormFactory formFactory;
 
   public Result index() {
-    return ok(views.html.animals.index.render());
+    List<Animal> animals =
+        Ebean.find(Animal.class).fetch("species").orderBy("species.speciesName").findList();
+    return ok(views.html.animals.index.render(animals));
   }
 
   public Result form() {

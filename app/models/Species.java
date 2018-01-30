@@ -35,4 +35,12 @@ public final class Species extends Model {
     this.waterRequirement = waterRequirement;
     this.airRequirement = airRequirement;
   }
+
+  @Override
+  public String toString() {
+    if (speciesName != null) {
+      return speciesName;
+    }
+    return "oops";
+  }
 }
