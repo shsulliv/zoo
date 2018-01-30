@@ -32,4 +32,12 @@ public final class AnimalController extends Controller {
     animal.save();
     return redirect("/animal");
   }
+
+  public Result edit() {
+    return ok(views.html.animals.edit.render());
+  }
+
+  public Result update() {
+    return redirect("/animal");
+  }
 }

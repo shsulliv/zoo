@@ -28,4 +28,12 @@ public final class KeeperController extends Controller {
     keeper.save();
     return redirect("/keeper");
   }
+
+  public Result edit() {
+    return ok(views.html.keepers.edit.render());
+  }
+
+  public Result update() {
+    return redirect("/keeper");
+  }
 }

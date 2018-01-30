@@ -38,4 +38,12 @@ public final class PenController extends Controller {
     pen.save();
     return redirect("/pen");
   }
+
+  public Result edit() {
+    return ok(views.html.pens.edit.render());
+  }
+
+  public Result update() {
+    return redirect("/pen");
+  }
 }
