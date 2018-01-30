@@ -9,3 +9,5 @@ scalaVersion := "2.12.4"
 
 libraryDependencies += jdbc
 libraryDependencies += guice
+libraryDependencies += "org.postgresql" % "postgresql" % "42.1.4"
+libraryDependencies += "org.yaml" % "snakeyaml" % "1.17"

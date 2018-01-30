@@ -1,0 +1,28 @@
+@(species: List[Species], pens: List[Pen])
+
+    @main("New") {
+        <h1>Add a New Animal</h1>
+        <form action="">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="animal_name">
+            </div>
+            <div>
+                <label for="species">Species:</label>
+                <select name="animal_species">
+                @for(s <- species) {
+                    <option value="@s.id">@s.name</option>
+                }
+                </select>
+            </div>
+            <div>
+                <label for="pen">Pen:</label>
+                <select name="animal_pen">
+                @for(p <- pens) {
+                    <option value="@p.id">@p.name</option>
+                }
+                </select>
+            </div>
+            <input type="submit">
+        </form>
+    }
