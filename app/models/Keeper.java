@@ -12,12 +12,12 @@ import java.util.UUID;
 public final class Keeper extends Model {
   @Id public UUID id;
 
-  @Constraints.Required public String name;
+  @Constraints.Required public String keeperName;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeper")
   public List<Pen> pens;
 
-  public Keeper(String name) {
-    this.name = name;
+  public Keeper(String keeperName) {
+    this.keeperName = keeperName;
   }
 }

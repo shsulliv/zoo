@@ -4,12 +4,12 @@
         <h1>Add a New Pen</h1>
         <form action="">
             <div>
-                <label for="name">Name:</label>
-                <input type="text" name="pen_name">
+                <label for="animalName">Name:</label>
+                <input type="text" animalName="pen_name">
             </div>
             <div>
                 <label for="pen-type">Type:</label>
-                <select name="pen_type">
+                <select animalName="pen_type">
                 @for(p <- penTypes) {
                     <option value="@p">@p</option>
                 }
@@ -17,15 +17,15 @@
             </div>
             <div>
                 <label for="land-area">Land Area:</label>
-                <input type="number" name="pen_land_area">
+                <input type="number" animalName="pen_land_area">
             </div>
             <div>
                 <label for="water-area">Water Area:</label>
-                <input type="number" name="pen_water_area">
+                <input type="number" animalName="pen_water_area">
             </div>
             <div>
                 <label for="air-area">Air Area:</label>
-                <input type="number" name="pen_air_area">
+                <input type="number" animalName="pen_air_area">
             </div>
             <input type="submit">
         </form>

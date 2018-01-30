@@ -3,18 +3,19 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET        /                    controllers.HomeController.index
+GET         /                     controllers.HomeController.index
 
-GET        /animal              controllers.AnimalController.index
-GET        /animal/new          controllers.AnimalController.form
+GET         /animal               controllers.AnimalController.index
+GET         /animal/new           controllers.AnimalController.form
+POST        /animal/create        controllers.AnimalController.create
 
-GET        /pen                 controllers.PenController.index
-GET        /pen/new             controllers.PenController.form
+GET         /pen                  controllers.PenController.index
+GET         /pen/new              controllers.PenController.form
 
-GET        /keeper              controllers.KeeperController.index
-GET        /keeper/new          controllers.KeeperController.form
+GET         /keeper               controllers.KeeperController.index
+GET         /keeper/new           controllers.KeeperController.form
 
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file         controllers.Assets.versioned(path="/public", file: Asset)

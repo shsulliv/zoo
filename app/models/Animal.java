@@ -11,7 +11,7 @@ import java.util.UUID;
 public final class Animal extends Model {
   @Id public UUID id;
 
-  @Constraints.Required public String name;
+  @Constraints.Required public String animalName;
 
   @ManyToOne(cascade = CascadeType.ALL)
   @Constraints.Required
@@ -21,8 +21,8 @@ public final class Animal extends Model {
   @Constraints.Required
   public Pen pen;
 
-  public Animal(String name, Species species) {
-    this.name = name;
+  public Animal(String animalName, Species species) {
+    this.animalName = animalName;
     this.species = species;
   }
 }

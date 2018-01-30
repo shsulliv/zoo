@@ -5,7 +5,7 @@
 
 create table animals (
   id                            uuid not null,
-  name                          varchar(255),
+  animal_name                   varchar(255),
   species_id                    uuid,
   pen_id                        uuid,
   constraint pk_animals primary key (id)
@@ -13,14 +13,14 @@ create table animals (
 
 create table keepers (
   id                            uuid not null,
-  name                          varchar(255),
+  keeper_name                   varchar(255),
   constraint pk_keepers primary key (id)
 );
 
 create table pens (
   id                            uuid not null,
-  name                          varchar(255),
-  type                          varchar(255),
+  pen_name                      varchar(255),
+  pen_type                      varchar(255),
   land_area                     float not null,
   water_area                    float not null,
   air_area                      float not null,
@@ -30,9 +30,9 @@ create table pens (
 
 create table species (
   id                            uuid not null,
-  name                          varchar(255),
+  species_name                  varchar(255),
   pen_type                      varchar(255),
-  petting                       boolean default false not null,
+  is_petting                    boolean default false not null,
   land_requirement              float not null,
   water_requirement             float not null,
   air_requirement               float not null,

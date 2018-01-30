@@ -11,9 +11,9 @@ import java.util.UUID;
 @Table(name = "species")
 public final class Species extends Model {
   @Id public UUID id;
-  @Constraints.Required public String name;
+  @Constraints.Required public String speciesName;
   @Constraints.Required public String penType;
-  @Constraints.Required public boolean petting;
+  @Constraints.Required public boolean isPetting;
   @Constraints.Required public double landRequirement;
   @Constraints.Required public double waterRequirement;
   @Constraints.Required public double airRequirement;
@@ -22,15 +22,15 @@ public final class Species extends Model {
   public List<Animal> animals;
 
   public Species(
-      String name,
+      String speciesName,
       String penType,
-      boolean petting,
+      boolean isPetting,
       double landRequirement,
       double waterRequirement,
       double airRequirement) {
-    this.name = name;
+    this.speciesName = speciesName;
     this.penType = penType;
-    this.petting = petting;
+    this.isPetting = isPetting;
     this.landRequirement = landRequirement;
     this.waterRequirement = waterRequirement;
     this.airRequirement = airRequirement;

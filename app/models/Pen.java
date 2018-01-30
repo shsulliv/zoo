@@ -12,8 +12,8 @@ import java.util.UUID;
 public final class Pen extends Model {
   @Id public UUID id;
 
-  @Constraints.Required public String name;
-  @Constraints.Required public String type;
+  @Constraints.Required public String penName;
+  @Constraints.Required public String penType;
   @Constraints.Required public double landArea;
   @Constraints.Required public double waterArea;
   @Constraints.Required public double airArea;
@@ -25,9 +25,9 @@ public final class Pen extends Model {
   @Constraints.Required
   public Keeper keeper;
 
-  public Pen(String name, String type, double landArea, double waterArea, double airArea) {
-    this.name = name;
-    this.type = type;
+  public Pen(String penName, String penType, double landArea, double waterArea, double airArea) {
+    this.penName = penName;
+    this.penType = penType;
     this.landArea = landArea;
     this.waterArea = waterArea;
     this.airArea = airArea;

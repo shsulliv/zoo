@@ -1,43 +1,34 @@
 package controllers;
 
+import io.ebean.Ebean;
+import models.Animal;
 import models.Species;
+import play.data.DynamicForm;
+import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.inject.Inject;
 import java.util.UUID;
 
-public class AnimalController extends Controller {
-  // index - list of all animals
-  // show - won't use
-  // new - form method
-  // create
-  // delete
-  // edit
-  // update
+public final class AnimalController extends Controller {
+  @Inject private FormFactory formFactory;
 
   public Result index() {
     return ok(views.html.animals.index.render());
   }
 
   public Result form() {
-    Species a = new Species("Dog", "land", true, 20, 0, 0);
-    Species b = new Species("Cat", "land", true, 10, 0, 0);
-    a.id = UUID.randomUUID();
-    b.id = UUID.randomUUID();
-    //    List<Species> species = Ebean.find(Species.class).findList();
-    List<Species> species = new ArrayList<>();
-    species.add(a);
-    species.add(b);
-    return ok(views.html.animals.form.render(species));
+    return ok(views.html.animals.form.render(Ebean.find(Species.class).findList()));
   }
 
   public Result create() {
-    // serialize the form somehow?
-    // Create a new animal from the form data
-    //    Animal animal = new Animal("Mr. Potato", "potato-toys", "potato-pen");
-    //    animal.save();
+    DynamicForm form = formFactory.form().bindFromRequest();
+    String speciesId = form.get("animal_species");
+    UUID id = UUID.fromString(speciesId);
+    Species species = Ebean.find(Species.class, id);
+    Animal animal = new Animal(form.get("animal_name"), species);
+    animal.save();
     return redirect("/animal");
   }
 }
