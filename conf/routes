@@ -3,28 +3,28 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                     controllers.HomeController.index
+GET         /                         controllers.HomeController.index
 
-GET         /animal               controllers.AnimalController.index
-GET         /animal/new           controllers.AnimalController.form
-POST        /animal/create        controllers.AnimalController.create
-GET         /animal/edit          controllers.AnimalController.edit
-POST        /animal/update        controllers.AnimalController.update
+GET         /animal                   controllers.AnimalController.index
+GET         /animal/new               controllers.AnimalController.form
+POST        /animal/create            controllers.AnimalController.create
+GET         /animal/edit/:id          controllers.AnimalController.edit(id: java.util.UUID)
+POST        /animal/update/:id        controllers.AnimalController.update(id: java.util.UUID)
 
-GET         /pen                  controllers.PenController.index
-GET         /pen/new              controllers.PenController.form
-POST        /pen/create           controllers.PenController.create
-GET         /pen/edit             controllers.PenController.edit
-POST        /pen/update           controllers.PenController.update
+GET         /pen                      controllers.PenController.index
+GET         /pen/new                  controllers.PenController.form
+POST        /pen/create               controllers.PenController.create
+GET         /pen/edit                 controllers.PenController.edit
+POST        /pen/update               controllers.PenController.update
 
-GET         /keeper               controllers.KeeperController.index
-GET         /keeper/new           controllers.KeeperController.form
-POST        /keeper/create        controllers.KeeperController.create
-GET         /keeper/edit          controllers.KeeperController.edit
-POST        /keeper/update        controllers.KeeperController.update
+GET         /keeper                   controllers.KeeperController.index
+GET         /keeper/new               controllers.KeeperController.form
+POST        /keeper/create            controllers.KeeperController.create
+GET         /keeper/edit              controllers.KeeperController.edit
+POST        /keeper/update            controllers.KeeperController.update
 
 
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file         controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file             controllers.Assets.versioned(path="/public", file: Asset)

@@ -4,9 +4,10 @@
         <h1>Animals</h1>
         <ol>
         @for(a <- animals) {
-            <li id="@a.id">
+            <li>
                 <span>@a.species</span>
                 <span>@a.animalName</span>
+                <a href="@routes.AnimalController.edit(a.id)">Edit</a>
             </li>
         }
         </ol>

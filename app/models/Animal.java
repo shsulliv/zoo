@@ -18,7 +18,6 @@ public final class Animal extends Model {
   public Species species;
 
   @ManyToOne(cascade = CascadeType.ALL)
-  @Constraints.Required
   public Pen pen;
 
   public Animal(String animalName, Species species) {

@@ -2,6 +2,7 @@ package controllers;
 
 import io.ebean.Ebean;
 import models.Animal;
+import models.Pen;
 import models.Species;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -33,11 +34,17 @@ public final class AnimalController extends Controller {
     return redirect("/animal");
   }
 
-  public Result edit() {
-    return ok(views.html.animals.edit.render());
+  public Result edit(UUID id) {
+    Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
+    List<Pen> pens = Ebean.find(Pen.class).findList();
+    return ok(views.html.animals.edit.render(animal, pens));
   }
 
-  public Result update() {
+  public Result update(UUID id) {
+    DynamicForm form = formFactory.form().bindFromRequest();
+    Animal animal = Ebean.find(Animal.class, id);
+    animal.pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
+    animal.save();
     return redirect("/animal");
   }
 }

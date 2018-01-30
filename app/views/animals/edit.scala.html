@@ -1,1 +1,19 @@
-@()
+@(animal: Animal, pens: List[Pen])
+
+@main("Edit") {
+    <h1>Edit the Animal</h1>
+    <h3>@animal.animalName</h3>
+    <h4>@animal.species</h4>
+    @helper.form(action = routes.AnimalController.update(animal.id)) {
+        @helper.CSRF.formField
+        <div>
+            <label for="animal-pen">Assign a Pen:</label>
+            <select name="animal_pen">
+            @for(p <- pens) {
+                <option value="@p.id">@p.penName</option>
+            }
+            </select>
+        </div>
+        <input type="submit">
+    }
+}
