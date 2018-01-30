@@ -25,13 +25,11 @@ public final class Pen extends Model {
   @Constraints.Required
   public Keeper keeper;
 
-  public Pen(
-      String name, String type, double landArea, double waterArea, double airArea, Keeper keeper) {
+  public Pen(String name, String type, double landArea, double waterArea, double airArea) {
     this.name = name;
     this.type = type;
     this.landArea = landArea;
     this.waterArea = waterArea;
     this.airArea = airArea;
-    this.keeper = keeper;
   }
 }

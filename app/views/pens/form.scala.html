@@ -1,40 +1,32 @@
-@(keepers: List[Keeper], penTypes: List[String])
+@(penTypes: List[String])
 
-@main("New") {
-    <h1>Add a New Pen</h1>
-    <form action="">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" name="pen_name">
-        </div>
-        <div>
-            <label for="pen-type">Type:</label>
-            <select name="pen_type">
-            @for(p <- penTypes) {
-                <option value="@p">@p</option>
-            }
-            </select>
-        </div>
-        <div>
-            <label for="land-area">Land Area:</label>
-            <input type="number" name="pen_land_area">
-        </div>
-        <div>
-            <label for="water-area">Water Area:</label>
-            <input type="number" name="pen_water_area">
-        </div>
-        <div>
-            <label for="air-area">Air Area:</label>
-            <input type="number" name="pen_air_area">
-        </div>
-        <div>
-            <label for="keeper">Keeper:</label>
-            <select name="pen_keeper">
-            @for(k <- keepers) {
-                <option value="@k.id">@k.name</option>
-            }
-            </select>
-        </div>
-        <input type="submit">
-    </form>
-}
+    @main("New") {
+        <h1>Add a New Pen</h1>
+        <form action="">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="pen_name">
+            </div>
+            <div>
+                <label for="pen-type">Type:</label>
+                <select name="pen_type">
+                @for(p <- penTypes) {
+                    <option value="@p">@p</option>
+                }
+                </select>
+            </div>
+            <div>
+                <label for="land-area">Land Area:</label>
+                <input type="number" name="pen_land_area">
+            </div>
+            <div>
+                <label for="water-area">Water Area:</label>
+                <input type="number" name="pen_water_area">
+            </div>
+            <div>
+                <label for="air-area">Air Area:</label>
+                <input type="number" name="pen_air_area">
+            </div>
+            <input type="submit">
+        </form>
+    }

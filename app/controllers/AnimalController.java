@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Keeper;
 import models.Pen;
 import models.Species;
 import play.mvc.Controller;
@@ -33,11 +32,9 @@ public class AnimalController extends Controller {
     species.add(a);
     species.add(b);
 
-    Keeper s = new Keeper("Shannon", "Hybrid");
-
     //    List<Pen> pens = Ebean.find(Pen.class).findList();
-    Pen c = new Pen("Pen C", "Hybrid", 20, 20, 0, s);
-    Pen d = new Pen("Pen D", "land", 20, 0, 0, s);
+    Pen c = new Pen("Pen C", "Hybrid", 20, 20, 0);
+    Pen d = new Pen("Pen D", "land", 20, 0, 0);
     List<Pen> pens = new ArrayList<>();
     pens.add(c);
     pens.add(d);
