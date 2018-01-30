@@ -11,6 +11,7 @@ POST        /animal/create        controllers.AnimalController.create
 
 GET         /pen                  controllers.PenController.index
 GET         /pen/new              controllers.PenController.form
+GET         /pen/create           controllers.PenController.create
 
 GET         /keeper               controllers.KeeperController.index
 GET         /keeper/new           controllers.KeeperController.form

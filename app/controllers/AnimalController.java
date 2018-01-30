@@ -24,9 +24,7 @@ public final class AnimalController extends Controller {
 
   public Result create() {
     DynamicForm form = formFactory.form().bindFromRequest();
-    String speciesId = form.get("animal_species");
-    UUID id = UUID.fromString(speciesId);
-    Species species = Ebean.find(Species.class, id);
+    Species species = Ebean.find(Species.class, UUID.fromString(form.get("animal_species")));
     Animal animal = new Animal(form.get("animal_name"), species);
     animal.save();
     return redirect("/animal");
