@@ -37,7 +37,7 @@ public final class AnimalController extends Controller {
   public Result edit(UUID id) {
     Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
     List<Pen> pens = Ebean.find(Pen.class).findList();
-    return ok(views.html.animals.edit.render(animal, pens));
+    return ok(views.html.animals.edit.render(animal, pens, false));
   }
 
   public Result update(UUID id) {
@@ -45,6 +45,23 @@ public final class AnimalController extends Controller {
     Animal animal = Ebean.find(Animal.class, id);
     animal.pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
     animal.save();
+    if (formHasErrors(form, id)) {
+      return ok(views.html.animals.edit.render(animal, Ebean.find(Pen.class).findList(), true));
+    }
     return redirect("/animal");
+  }
+
+  private boolean formHasErrors(DynamicForm form, UUID id) {
+    Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
+    Pen pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
+
+    if (!animal.species.penType.equals(pen.penType)) {
+      return true;
+    } else if (animal.species.landRequirement > pen.landArea
+        && animal.species.waterRequirement > pen.waterArea
+        && animal.species.airRequirement > pen.airArea) {
+      return true;
+    }
+    return false;
   }
 }
