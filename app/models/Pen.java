@@ -32,4 +32,9 @@ public final class Pen extends Model {
     this.waterArea = waterArea;
     this.airArea = airArea;
   }
+
+  @Override
+  public String toString() {
+    return penName;
+  }
 }

@@ -1,14 +1,19 @@
 @(animals: List[Animal])
 
-    @main("Animals") {
-        <h1>Animals</h1>
-        <ol>
-        @for(a <- animals) {
-            <li>
-                <span>@a.species</span>
-                <span>@a.animalName</span>
-                <a href="@routes.AnimalController.edit(a.id)">Edit</a>
-            </li>
-        }
-        </ol>
+@main("Animals") {
+    <h1>Animals</h1>
+    <ol>
+    @for(a <- animals) {
+        <li>
+            <span>@a.species</span>
+            <span>@a.animalName</span>
+            @if(a.pen == null) {
+                <span>No Pen Assigned.</span>
+            } else {
+                <span>@a.pen</span>
+            }
+            <a href="@routes.AnimalController.edit(a.id)">Edit</a>
+        </li>
     }
+    </ol>
+}
