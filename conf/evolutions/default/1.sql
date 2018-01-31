@@ -14,6 +14,7 @@ create table animals (
 create table keepers (
   id                            uuid not null,
   keeper_name                   varchar(255),
+  pen_type                      varchar(255),
   constraint pk_keepers primary key (id)
 );
 

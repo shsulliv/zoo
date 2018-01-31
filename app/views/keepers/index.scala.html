@@ -6,6 +6,7 @@
     @for(k <- keepers) {
         <li id="@k.id">
             <span>@k.keeperName</span>
+            <span>@k.penType</span>
             @if(k.pens.isEmpty) {
                 <span>No pens assigned.</span>
             } else {

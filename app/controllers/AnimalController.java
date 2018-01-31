@@ -43,11 +43,11 @@ public final class AnimalController extends Controller {
   public Result update(UUID id) {
     DynamicForm form = formFactory.form().bindFromRequest();
     Animal animal = Ebean.find(Animal.class, id);
-    animal.pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
-    animal.save();
     if (formHasErrors(form, id)) {
       return ok(views.html.animals.edit.render(animal, Ebean.find(Pen.class).findList(), true));
     }
+    animal.pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
+    animal.save();
     return redirect("/animal");
   }
 
@@ -58,8 +58,8 @@ public final class AnimalController extends Controller {
     if (!animal.species.penType.equals(pen.penType)) {
       return true;
     } else if (animal.species.landRequirement > pen.landArea
-        && animal.species.waterRequirement > pen.waterArea
-        && animal.species.airRequirement > pen.airArea) {
+        || animal.species.waterRequirement > pen.waterArea
+        || animal.species.airRequirement > pen.airArea) {
       return true;
     }
     return false;

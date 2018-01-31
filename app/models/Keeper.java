@@ -13,12 +13,14 @@ public final class Keeper extends Model {
   @Id public UUID id;
 
   @Constraints.Required public String keeperName;
+  @Constraints.Required public String penType;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "keeper")
   public List<Pen> pens;
 
-  public Keeper(String keeperName) {
+  public Keeper(String keeperName, String penType) {
     this.keeperName = keeperName;
+    this.penType = penType;
   }
 
   @Override
