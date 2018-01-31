@@ -14,8 +14,8 @@ POST        /animal/update/:id        controllers.AnimalController.update(id: ja
 GET         /pen                      controllers.PenController.index
 GET         /pen/new                  controllers.PenController.form
 POST        /pen/create               controllers.PenController.create
-GET         /pen/edit                 controllers.PenController.edit
-POST        /pen/update               controllers.PenController.update
+GET         /pen/edit/:id             controllers.PenController.edit(id: java.util.UUID)
+POST        /pen/update/:id           controllers.PenController.update(id: java.util.UUID)
 
 GET         /keeper                   controllers.KeeperController.index
 GET         /keeper/new               controllers.KeeperController.form

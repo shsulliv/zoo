@@ -1,1 +1,19 @@
-@()
+@(pen: Pen, keepers: List[Keeper])
+
+    @main("Edit") {
+        <h1>Edit the Pen</h1>
+        <h3>@pen.penName</h3>
+        <h4>@pen.penType</h4>
+        @helper.form(action = routes.PenController.update(pen.id)) {
+            @helper.CSRF.formField
+            <div>
+                <label for="pen-keeper">Assign a Keeper:</label>
+                <select name="pen_keeper">
+                @for(k <- keepers) {
+                    <option value="@k.id">@k.keeperName</option>
+                }
+                </select>
+            </div>
+            <input type="submit">
+        }
+    }

@@ -38,9 +38,6 @@ public final class Species extends Model {
 
   @Override
   public String toString() {
-    if (speciesName != null) {
-      return speciesName;
-    }
-    return "oops";
+    return speciesName;
   }
 }

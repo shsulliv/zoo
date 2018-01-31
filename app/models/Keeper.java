@@ -20,4 +20,9 @@ public final class Keeper extends Model {
   public Keeper(String keeperName) {
     this.keeperName = keeperName;
   }
+
+  @Override
+  public String toString() {
+    return keeperName;
+  }
 }

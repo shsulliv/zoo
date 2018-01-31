@@ -2,6 +2,7 @@ package controllers;
 
 import com.google.common.collect.ImmutableList;
 import io.ebean.Ebean;
+import models.Keeper;
 import models.Pen;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -10,6 +11,7 @@ import play.mvc.Result;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.UUID;
 
 public final class PenController extends Controller {
   private static final List<String> PEN_TYPES =
@@ -18,7 +20,7 @@ public final class PenController extends Controller {
   @Inject private FormFactory formFactory;
 
   public Result index() {
-    List<Pen> pens = Ebean.find(Pen.class).findList();
+    List<Pen> pens = Ebean.find(Pen.class).fetch("keeper").orderBy("keeper.keeperName").findList();
     return ok(views.html.pens.index.render(pens));
   }
 
@@ -39,11 +41,17 @@ public final class PenController extends Controller {
     return redirect("/pen");
   }
 
-  public Result edit() {
-    return ok(views.html.pens.edit.render());
+  public Result edit(UUID id) {
+    Pen pen = Ebean.find(Pen.class, id);
+    List<Keeper> keepers = Ebean.find(Keeper.class).findList();
+    return ok(views.html.pens.edit.render(pen, keepers));
   }
 
-  public Result update() {
+  public Result update(UUID id) {
+    DynamicForm form = formFactory.form().bindFromRequest();
+    Pen pen = Ebean.find(Pen.class, id);
+    pen.keeper = Ebean.find(Keeper.class, UUID.fromString(form.get("pen_keeper")));
+    pen.save();
     return redirect("/pen");
   }
 }

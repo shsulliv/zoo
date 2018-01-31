@@ -1,16 +1,22 @@
 @(pens: List[Pen])
 
-@main("Pens") {
-    <h1>Pens</h1>
-    <ol>
-    @for(p <- pens) {
-        <li id="@p.id">
-            <span>@p.penType</span>
-            <span>@p.penName</span>
-            <span>@p.landArea m2</span>
-            <span>@p.waterArea m2</span>
-            <span>@p.airArea m2</span>
-        </li>
+    @main("Pens") {
+        <h1>Pens</h1>
+        <ol>
+        @for(p <- pens) {
+            <li id="@p.id">
+                <span>@p.penType</span>
+                <span>@p.penName</span>
+                <span>@p.landArea m2</span>
+                <span>@p.waterArea m2</span>
+                <span>@p.airArea m2</span>
+                @if(p.keeper == null) {
+                    <span>No Keeper Assigned.</span>
+                } else {
+                    <span>@p.keeper</span>
+                }
+                <a href="@routes.PenController.edit(p.id)">Edit</a>
+            </li>
+        }
+        </ol>
     }
-    </ol>
-}
