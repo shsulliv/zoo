@@ -6,6 +6,12 @@
     @for(k <- keepers) {
         <li id="@k.id">
             <span>@k.keeperName</span>
+            @if(k.pens.isEmpty) {
+                <span>No pens assigned.</span>
+            } else {
+                <span>@k.pens.mkString(", ")</span>
+            }
+            <a href="@routes.KeeperController.edit(k.id)">Edit</a>
         </li>
     }
     </ol>

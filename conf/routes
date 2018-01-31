@@ -20,8 +20,8 @@ POST        /pen/update/:id           controllers.PenController.update(id: java.
 GET         /keeper                   controllers.KeeperController.index
 GET         /keeper/new               controllers.KeeperController.form
 POST        /keeper/create            controllers.KeeperController.create
-GET         /keeper/edit              controllers.KeeperController.edit
-POST        /keeper/update            controllers.KeeperController.update
+GET         /keeper/edit/:id          controllers.KeeperController.edit(id: java.util.UUID)
+POST        /keeper/update/:id        controllers.KeeperController.update(id: java.util.UUID)
 
 
 
