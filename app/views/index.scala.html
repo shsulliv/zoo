@@ -1,5 +1,9 @@
-@()
+@import net.aksingh.owmjapis.model.CurrentWeather
+@(weather: CurrentWeather)
 
 @main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+    <h1>Welcome to Play!</h1>
+
+    <p>Make sure it is working</p>
+    <div>Max temp: @weather.getMainData.getTempMax</div>
 }

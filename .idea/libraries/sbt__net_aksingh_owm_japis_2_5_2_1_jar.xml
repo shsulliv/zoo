@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: net.aksingh:owm-japis:2.5.2.1:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/net.aksingh/owm-japis/jars/owm-japis-2.5.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/net.aksingh/owm-japis/srcs/owm-japis-2.5.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
