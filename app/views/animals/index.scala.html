@@ -2,32 +2,33 @@
 
 @main("Animals") {
     <h2>Animals</h2>
-        <table class="table">
-            <thead class="thead-light">
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Species</th>
+                <th scope="col">Name</th>
+                <th scope="col">Pen Type</th>
+                <th scope="col">Pen</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(a <- animals) {
                 <tr>
-                    <th scope="col">Species</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Pen Type</th>
-                    <th scope="col">Pen</th>
-                    <th scope="col"></th>
+                    <td>@a.species</td>
+                    <td>@a.animalName</td>
+                    <td>@a.species.penType</td>
+                    @if(a.pen == null) {
+                        <td class="text-danger">No Pen Assigned.</td>
+                    } else {
+                        <td>@a.pen</td>
+                    }
+                    <td>
+                        <a href="@routes.AnimalController.edit(a.id)">Edit</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @for(a <- animals) {
-                    <tr>
-                        <td>@a.species</td>
-                        <td>@a.animalName</td>
-                        <td>@a.species.penType</td>
-                        @if(a.pen == null) {
-                            <td>No Pen Assigned.</td>
-                        } else {
-                            <td>@a.pen</td>
-                        }
-                        <td>
-                            <a href="@routes.AnimalController.edit(a.id)">Edit</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            }
+        </tbody>
+    </table>
 }

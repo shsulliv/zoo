@@ -1,7 +1,7 @@
 @(pens: List[Pen])
 
 @main("Pens") {
-    <h1>Pens</h1>
+    <h2>Pens</h2>
 
     <table class="table">
         <thead class="thead-light">
@@ -26,7 +26,7 @@
                     <td>@p.airArea m2</td>
                     <td>@p.animals.size</td>
                     @if(p.keeper == null) {
-                        <td>No Keeper Assigned.</td>
+                        <td class="text-danger">No Keeper Assigned.</td>
                     } else {
                         <td>@p.keeper</td>
                     }

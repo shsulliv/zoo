@@ -1,19 +1,32 @@
 @(keepers: List[Keeper])
 
 @main("Keepers") {
-    <h1>Keepers</h1>
-    <ol>
-    @for(k <- keepers) {
-        <li id="@k.id">
-            <span>@k.keeperName</span>
-            <span>@k.penType</span>
-            @if(k.pens.isEmpty) {
-                <span>No pens assigned.</span>
-            } else {
-                <span>@k.pens.mkString(", ")</span>
+    <h2>Keepers</h2>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Pen Type</th>
+                <th scope="col">Pens</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(k <- keepers) {
+                <tr>
+                    <td>@k.keeperName</td>
+                    <td>@k.penType</td>
+                    @if(k.pens.isEmpty) {
+                        <td class="text-danger">No pens assigned.</td>
+                    } else {
+                        <td>@k.pens.mkString(", ")</td>
+                    }
+                    <td>
+                        <a href="@routes.KeeperController.edit(k.id)">Edit</a>
+                    </td>
+                </tr>
             }
-            <a href="@routes.KeeperController.edit(k.id)">Edit</a>
-        </li>
-    }
-    </ol>
+        </tbody>
+    </table>
 }
