@@ -7,7 +7,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 /** This controller contains an action to handle HTTP requests to the application's home page. */
-public class HomeController extends Controller {
+public class WeatherController extends Controller {
   private static final String API_KEY = "5561a8e5d927fc2891afef569aaad7f9";
   private static final OWM weatherClient = new OWM(API_KEY);
   private static final double KELVIN = 273.15;
@@ -18,6 +18,6 @@ public class HomeController extends Controller {
    */
   public Result index() throws APIException {
     CurrentWeather weather = weatherClient.currentWeatherByCityName("London");
-    return ok(views.html.index.render(weather, KELVIN));
+    return ok(views.html.weather.index.render(weather, KELVIN));
   }
 }

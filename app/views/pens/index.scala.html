@@ -2,22 +2,39 @@
 
 @main("Pens") {
     <h1>Pens</h1>
-    <ol>
-    @for(p <- pens) {
-        <li id="@p.id">
-            <span>@p.penType</span>
-            <span>@p.penName</span>
-            <span>@p.landArea m2</span>
-            <span>@p.waterArea m2</span>
-            <span>@p.airArea m2</span>
-            <span>@p.animals.size</span>
-            @if(p.keeper == null) {
-                <span>No Keeper Assigned.</span>
-            } else {
-                <span>@p.keeper</span>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">Land Area</th>
+                <th scope="col">Water Area</th>
+                <th scope="col">Air Area</th>
+                <th scope="col">Animals</th>
+                <th scope="col">Keeper</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(p <- pens) {
+                <tr>
+                    <td>@p.penType</td>
+                    <td>@p.penName</td>
+                    <td>@p.landArea m2</td>
+                    <td>@p.waterArea m2</td>
+                    <td>@p.airArea m2</td>
+                    <td>@p.animals.size</td>
+                    @if(p.keeper == null) {
+                        <td>No Keeper Assigned.</td>
+                    } else {
+                        <td>@p.keeper</td>
+                    }
+                    <td>
+                        <a href="@routes.PenController.edit(p.id)">Edit</a>
+                    </td>
+                </tr>
             }
-            <a href="@routes.PenController.edit(p.id)">Edit</a>
-        </li>
-    }
-    </ol>
+        </tbody>
+    </table>
 }

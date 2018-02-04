@@ -2,27 +2,11 @@
 @(weather: CurrentWeather, kelvin: Double)
 
 @main("Welcome to Play") {
-    <h1>Zoo App</h1>
-
     <div>
         <h2>London</h2>
         <img src="@weather.getWeatherList.get(0).getIconLink"/>
         <p>@weather.getWeatherList.get(0).getMainInfo</p>
         <p>High: @(weather.getMainData.getTempMax - kelvin)</p>
         <p>Low: @(weather.getMainData.getTempMin - kelvin)</p>
-    </div>
-
-    <div>
-        <ul>
-            <li>
-                <a href="/animal">Animals</a>
-            </li>
-            <li>
-                <a href="/pen">Pens</a>
-            </li>
-            <li>
-                <a href="/keeper">Keepers</a>
-            </li>
-        </ul>
     </div>
 }
