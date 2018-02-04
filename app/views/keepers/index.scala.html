@@ -18,7 +18,7 @@
                     <td>@k.keeperName</td>
                     <td>@k.penType</td>
                     @if(k.pens.isEmpty) {
-                        <td class="text-danger">No pens assigned.</td>
+                        <td class="text-danger">No pens assigned</td>
                     } else {
                         <td>@k.pens.mkString(", ")</td>
                     }
@@ -29,4 +29,7 @@
             }
         </tbody>
     </table>
+    <div class="text-center container">
+        <a href="/keeper/new" class="btn btn-lg btn-primary text-center col-sm-2">Add</a>
+    </div>
 }

@@ -20,7 +20,7 @@
                     <td>@a.animalName</td>
                     <td>@a.species.penType</td>
                     @if(a.pen == null) {
-                        <td class="text-danger">No Pen Assigned.</td>
+                        <td class="text-danger">No Pen Assigned</td>
                     } else {
                         <td>@a.pen</td>
                     }
@@ -31,4 +31,7 @@
             }
         </tbody>
     </table>
+    <div class="text-center container">
+        <a href="/animal/new" class="btn btn-lg btn-primary text-center col-sm-2">Add</a>
+    </div>
 }

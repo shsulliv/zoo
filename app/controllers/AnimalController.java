@@ -46,6 +46,7 @@ public final class AnimalController extends Controller {
     if (formHasErrors(form, id)) {
       return ok(views.html.animals.edit.render(animal, Ebean.find(Pen.class).findList(), true));
     }
+    animal.animalName = form.get("animal_name");
     animal.pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
     animal.save();
     return redirect("/animal");

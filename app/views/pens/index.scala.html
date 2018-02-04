@@ -8,9 +8,9 @@
             <tr>
                 <th scope="col">Type</th>
                 <th scope="col">Name</th>
-                <th scope="col">Land Area</th>
-                <th scope="col">Water Area</th>
-                <th scope="col">Air Area</th>
+                <th scope="col">Land Area(m2)</th>
+                <th scope="col">Water Area(m2)</th>
+                <th scope="col">Air Area(m2)</th>
                 <th scope="col">Animals</th>
                 <th scope="col">Keeper</th>
                 <th scope="col"></th>
@@ -21,12 +21,12 @@
                 <tr>
                     <td>@p.penType</td>
                     <td>@p.penName</td>
-                    <td>@p.landArea m2</td>
-                    <td>@p.waterArea m2</td>
-                    <td>@p.airArea m2</td>
+                    <td>@p.landArea</td>
+                    <td>@p.waterArea</td>
+                    <td>@p.airArea</td>
                     <td>@p.animals.size</td>
                     @if(p.keeper == null) {
-                        <td class="text-danger">No Keeper Assigned.</td>
+                        <td class="text-danger">No Keeper Assigned</td>
                     } else {
                         <td>@p.keeper</td>
                     }
@@ -37,4 +37,7 @@
             }
         </tbody>
     </table>
+    <div class="text-center container">
+        <a class="btn btn-lg btn-primary text-center col-sm-2" href="/pen/new">Add</a>
+    </div>
 }
