@@ -2,6 +2,7 @@ package controllers;
 
 import net.aksingh.owmjapis.api.APIException;
 import net.aksingh.owmjapis.core.OWM;
+import net.aksingh.owmjapis.model.CurrentWeather;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -9,13 +10,14 @@ import play.mvc.Result;
 public class HomeController extends Controller {
   private static final String API_KEY = "5561a8e5d927fc2891afef569aaad7f9";
   private static final OWM weatherClient = new OWM(API_KEY);
-  private static final double kelvin = 273.15;
+  private static final double KELVIN = 273.15;
   /**
    * An action that renders an HTML page with a welcome message. The configuration in the <code>
    * routes</code> file means that this method will be called when the application receives a <code>
    * GET</code> request with a path of <code>/</code>.
    */
   public Result index() throws APIException {
-    return ok(views.html.index.render(weatherClient.currentWeatherByCityName("London"), kelvin));
+    CurrentWeather weather = weatherClient.currentWeatherByCityName("London");
+    return ok(views.html.index.render(weather, KELVIN));
   }
 }

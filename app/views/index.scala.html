@@ -6,6 +6,7 @@
 
     <div>
         <h2>London</h2>
+        <img src="@weather.getWeatherList.get(0).getIconLink"/>
         <p>@weather.getWeatherList.get(0).getMainInfo</p>
         <p>High: @(weather.getMainData.getTempMax - kelvin)</p>
         <p>Low: @(weather.getMainData.getTempMin - kelvin)</p>
