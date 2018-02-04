@@ -1,9 +1,13 @@
 @import net.aksingh.owmjapis.model.CurrentWeather
-@(weather: CurrentWeather)
+@(weather: CurrentWeather, kelvin: Double)
 
 @main("Welcome to Play") {
-    <h1>Welcome to Play!</h1>
+    <h1>Zoo App</h1>
 
-    <p>Make sure it is working</p>
-    <div>Max temp: @weather.getMainData.getTempMax</div>
+    <div>
+        <h2>London</h2>
+        <p>@weather.getWeatherList.get(0).getMainInfo</p>
+        <p>High: @(weather.getMainData.getTempMax - kelvin)</p>
+        <p>Low: @(weather.getMainData.getTempMin - kelvin)</p>
+    </div>
 }
