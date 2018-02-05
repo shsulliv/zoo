@@ -53,6 +53,7 @@ public final class PenController extends Controller {
     if (formHasErrors(form, id)) {
       return ok(views.html.pens.edit.render(pen, Ebean.find(Keeper.class).findList(), true));
     }
+    pen.penName = form.get("pen_name");
     pen.keeper = Ebean.find(Keeper.class, UUID.fromString(form.get("pen_keeper")));
     pen.save();
     return redirect("/pen");

@@ -1,33 +1,31 @@
 @(penTypes: List[String])
 
 @main("New") {
-    <h1>Add a New Pen</h1>
+    <h2 class="col-12 text-center">Register a New Pen</h2>
     @helper.form(action = routes.PenController.create()) {
         @helper.CSRF.formField
-        <div>
-            <label for="pen-name">Name:</label>
-            <input type="text" name="pen_name">
+        <div class="form-group row justify-content-center">
+            <input class="form-control col-4" type="text" name="pen_name" placeholder="Name">
         </div>
-        <div>
-            <label for="pen-type">Type:</label>
-            <select name="pen_type">
-            @for(p <- penTypes) {
-                <option value="@p">@p</option>
-            }
+        <div class="form-group row justify-content-center">
+            <select class="form-control col-4" name="pen_type">
+                <option>Type...</option>
+                @for(p <- penTypes) {
+                    <option value="@p">@p</option>
+                }
             </select>
         </div>
-        <div>
-            <label for="land-area">Land Area:</label>
-            <input type="number" name="pen_land_area">
+        <div class="form-group row justify-content-center">
+            <input class="form-control col-4" type="number" name="pen_land_area" placeholder="Land Area">
         </div>
-        <div>
-            <label for="water-area">Water Area:</label>
-            <input type="number" name="pen_water_area">
+        <div class="form-group row justify-content-center">
+            <input class="form-control col-4" type="number" name="pen_water_area" placeholder="Water Area">
         </div>
-        <div>
-            <label for="air-area">Air Area:</label>
-            <input type="number" name="pen_air_area">
+        <div class="form-group row justify-content-center">
+            <input class="form-control col-4" type="number" name="pen_air_area" placeholder="Air Area">
         </div>
-        <input type="submit">
+        <div class="row justify-content-center">
+            <button class="btn btn-lg btn-primary text-center col-2" type="submit">Add</button>
+        </div>
     }
 }

@@ -2,22 +2,31 @@
 
 @main("Edit") {
     @if(hasError) {
-        <span>
-            Unable to assign pen to keeper. Please check that your pen and keeper are compatible and try again.</span>
+        <p class="col-12 text-center text-danger">
+            Unable to assign pen to keeper. Please check that your pen and keeper are compatible and try again.</p>
     }
-    <h1>Edit the Pen</h1>
-    <h3>@pen.penName</h3>
-    <h4>@pen.penType</h4>
+    <h2 class="col-12 text-center">Edit the Pen</h2>
+    <h4 class="col-12 text-center">@pen.penName</h4>
+    <h6 class="col-12 text-center">@pen.penType</h6>
     @helper.form(action = routes.PenController.update(pen.id)) {
         @helper.CSRF.formField
-        <div>
-            <label for="pen-keeper">Assign a Keeper:</label>
-            <select name="pen_keeper">
-            @for(k <- keepers) {
-                <option value="@k.id">@k.keeperName</option>
-            }
+        <div class="form-group row justify-content-center">
+            <input class="form-control col-4" type="text" name="pen_name" placeholder="Name" value="@pen.penName">
+        </div>
+        <div class="form-group row justify-content-center">
+            <select class="form-control col-4" name="pen_keeper">
+                <option>Keeper...</option>
+                @for(k <- keepers) {
+                    @if(pen.keeper != null && pen.keeper.id == k.id) {
+                        <option selected value="@k.id">@k.keeperName : @k.penType</option>
+                    } else {
+                        <option value="@k.id">@k.keeperName : @k.penType</option>
+                    }
+                }
             </select>
         </div>
-        <input type="submit">
+        <div class="row justify-content-center">
+            <button class="btn btn-lg btn-primary text-center col-2" type="submit">Save</button>
+        </div>
     }
 }
