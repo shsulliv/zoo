@@ -48,6 +48,7 @@ public final class KeeperController extends Controller {
     if (formHasErrors(form, id)) {
       return ok(views.html.keepers.edit.render(keeper, Ebean.find(Pen.class).findList(), true));
     }
+    keeper.keeperName = form.get("keeper_name");
     pen.keeper = keeper;
     pen.save();
     return redirect("/keeper");
