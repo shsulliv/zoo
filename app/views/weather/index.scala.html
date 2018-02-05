@@ -2,7 +2,7 @@
 @(weather: CurrentWeather, kelvin: Double)
 
 @main("Welcome to Play") {
-    <div>
+    <div class="col-12 text-center">
         <h2>London</h2>
         <img src="@weather.getWeatherList.get(0).getIconLink"/>
         <p>@weather.getWeatherList.get(0).getMainInfo</p>
