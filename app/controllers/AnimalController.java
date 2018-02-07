@@ -42,27 +42,19 @@ public final class AnimalController extends Controller {
 
   public Result update(UUID id) {
     DynamicForm form = formFactory.form().bindFromRequest();
-    Animal animal = Ebean.find(Animal.class, id);
-    if (formHasErrors(form, id)) {
+    Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
+    Pen pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
+    if (cannotAssign(animal, pen)) {
       return ok(views.html.animals.edit.render(animal, Ebean.find(Pen.class).findList(), true));
     }
     animal.animalName = form.get("animal_name");
-    animal.pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
+    animal.pen = pen;
     animal.save();
     return redirect("/animal");
   }
 
-  private boolean formHasErrors(DynamicForm form, UUID id) {
-    Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
-    Pen pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
-
-    if (!animal.species.penType.equals(pen.penType)) {
-      return true;
-    } else if (animal.species.landRequirement > pen.landArea
-        || animal.species.waterRequirement > pen.waterArea
-        || animal.species.airRequirement > pen.airArea) {
-      return true;
-    }
-    return false;
+  private boolean cannotAssign(Animal animal, Pen pen) {
+    for (Animal a : pen.animals) if (animal.species.canCohabitate(a.species)) return true;
+    return !animal.species.penType.equals(pen.penType) || !pen.hasRoomFor(animal);
   }
 }

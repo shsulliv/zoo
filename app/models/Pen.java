@@ -33,6 +33,22 @@ public final class Pen extends Model {
     this.airArea = airArea;
   }
 
+  public boolean hasRoomFor(Animal animal) {
+    double availableLand = this.landArea;
+    double availableWater = this.waterArea;
+    double availableAir = this.airArea;
+
+    for (Animal a : this.animals) {
+      Species species = a.species;
+      availableLand = availableLand - species.landRequirement;
+      availableWater = availableWater - species.waterRequirement;
+      availableAir = availableAir - species.airRequirement;
+    }
+    return animal.species.landRequirement >= availableLand
+        && animal.species.waterRequirement >= availableWater
+        && animal.species.airRequirement >= availableAir;
+  }
+
   @Override
   public String toString() {
     return penName;

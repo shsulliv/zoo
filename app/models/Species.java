@@ -1,15 +1,26 @@
 package models;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import io.ebean.Model;
 import play.data.validation.Constraints;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "species")
 public final class Species extends Model {
+  private static final Map<String, Set<String>> COMPANIONS;
+
+  static {
+    COMPANIONS =
+        new ImmutableMap.Builder<String, Set<String>>()
+            .put("Dog", ImmutableSet.of("Goat"))
+            .put("Goat", ImmutableSet.of("Dog"))
+            .build();
+  }
+
   @Id public UUID id;
   @Constraints.Required public String speciesName;
   @Constraints.Required public String penType;
@@ -34,6 +45,12 @@ public final class Species extends Model {
     this.landRequirement = landRequirement;
     this.waterRequirement = waterRequirement;
     this.airRequirement = airRequirement;
+  }
+
+  public boolean canCohabitate(Species otherSpecies) {
+    return COMPANIONS
+        .getOrDefault(this.speciesName, Collections.emptySet())
+        .contains(otherSpecies.speciesName);
   }
 
   @Override

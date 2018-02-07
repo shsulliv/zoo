@@ -1,0 +1,5 @@
+package controllers;
+
+import play.mvc.Controller;
+
+public class AutoController extends Controller {}

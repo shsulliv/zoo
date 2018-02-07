@@ -50,7 +50,8 @@ public final class PenController extends Controller {
   public Result update(UUID id) {
     DynamicForm form = formFactory.form().bindFromRequest();
     Pen pen = Ebean.find(Pen.class, id);
-    if (formHasErrors(form, id)) {
+    Keeper keeper = Ebean.find(Keeper.class, UUID.fromString(form.get("pen_keeper")));
+    if (cannotAssign(pen, keeper)) {
       return ok(views.html.pens.edit.render(pen, Ebean.find(Keeper.class).findList(), true));
     }
     pen.penName = form.get("pen_name");
@@ -59,13 +60,7 @@ public final class PenController extends Controller {
     return redirect("/pen");
   }
 
-  private boolean formHasErrors(DynamicForm form, UUID id) {
-    Pen pen = Ebean.find(Pen.class, id);
-    Keeper keeper = Ebean.find(Keeper.class, UUID.fromString(form.get("pen_keeper")));
-
-    if (!pen.penType.equals(keeper.penType)) {
-      return true;
-    }
-    return false;
+  private boolean cannotAssign(Pen pen, Keeper keeper) {
+    return !pen.penType.equals(keeper.penType);
   }
 }
