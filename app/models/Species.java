@@ -28,6 +28,7 @@ public final class Species extends Model {
   @Constraints.Required public double landRequirement;
   @Constraints.Required public double waterRequirement;
   @Constraints.Required public double airRequirement;
+  @Constraints.Required public double temperature;
 
   @OneToMany(mappedBy = "species", cascade = CascadeType.ALL)
   public List<Animal> animals;
@@ -38,13 +39,15 @@ public final class Species extends Model {
       boolean isPetting,
       double landRequirement,
       double waterRequirement,
-      double airRequirement) {
+      double airRequirement,
+      double temperature) {
     this.speciesName = speciesName;
     this.penType = penType;
     this.isPetting = isPetting;
     this.landRequirement = landRequirement;
     this.waterRequirement = waterRequirement;
     this.airRequirement = airRequirement;
+    this.temperature = temperature;
   }
 
   public boolean canCohabitate(Species otherSpecies) {

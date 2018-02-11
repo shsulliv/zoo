@@ -44,17 +44,12 @@ public final class AnimalController extends Controller {
     DynamicForm form = formFactory.form().bindFromRequest();
     Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
     Pen pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
-    if (cannotAssign(animal, pen)) {
+    if (!pen.hasRoomFor(animal)) {
       return ok(views.html.animals.edit.render(animal, Ebean.find(Pen.class).findList(), true));
     }
     animal.animalName = form.get("animal_name");
     animal.pen = pen;
     animal.save();
     return redirect("/animal");
-  }
-
-  private boolean cannotAssign(Animal animal, Pen pen) {
-    for (Animal a : pen.animals) if (animal.species.canCohabitate(a.species)) return true;
-    return !animal.species.penType.equals(pen.penType) || !pen.hasRoomFor(animal);
   }
 }

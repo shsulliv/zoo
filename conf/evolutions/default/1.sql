@@ -25,6 +25,7 @@ create table pens (
   land_area                     float not null,
   water_area                    float not null,
   air_area                      float not null,
+  temperature                   float not null,
   keeper_id                     uuid,
   constraint pk_pens primary key (id)
 );
@@ -37,6 +38,7 @@ create table species (
   land_requirement              float not null,
   water_requirement             float not null,
   air_requirement               float not null,
+  temperature                   float not null,
   constraint pk_species primary key (id)
 );
 

@@ -15,7 +15,8 @@ import java.util.UUID;
 
 public final class KeeperController extends Controller {
   private static final List<String> PEN_TYPES =
-      ImmutableList.of("Dry", "Aquarium", "Aviary", "Hybrid", "Petting");
+      ImmutableList.of(
+          "Dry", "Aquarium - Salt Water", "Aquarium - Fresh Water", "Aviary", "Hybrid", "Petting");
 
   @Inject private FormFactory formFactory;
 

@@ -17,6 +17,7 @@ public final class Pen extends Model {
   @Constraints.Required public double landArea;
   @Constraints.Required public double waterArea;
   @Constraints.Required public double airArea;
+  @Constraints.Required public double temperature;
 
   @OneToMany(mappedBy = "pen", cascade = CascadeType.ALL)
   public List<Animal> animals;
@@ -25,28 +26,42 @@ public final class Pen extends Model {
   @Constraints.Required
   public Keeper keeper;
 
-  public Pen(String penName, String penType, double landArea, double waterArea, double airArea) {
+  public Pen(
+      String penName,
+      String penType,
+      double landArea,
+      double waterArea,
+      double airArea,
+      double temperature) {
     this.penName = penName;
     this.penType = penType;
     this.landArea = landArea;
     this.waterArea = waterArea;
     this.airArea = airArea;
+    this.temperature = temperature;
   }
 
   public boolean hasRoomFor(Animal animal) {
+    if (!this.penType.equals(animal.species.penType)) {
+      return false;
+    }
     double availableLand = this.landArea;
     double availableWater = this.waterArea;
     double availableAir = this.airArea;
 
     for (Animal a : this.animals) {
       Species species = a.species;
+      if (!species.canCohabitate(animal.species)) {
+        return false;
+      }
       availableLand = availableLand - species.landRequirement;
       availableWater = availableWater - species.waterRequirement;
       availableAir = availableAir - species.airRequirement;
     }
-    return animal.species.landRequirement >= availableLand
-        && animal.species.waterRequirement >= availableWater
-        && animal.species.airRequirement >= availableAir;
+    return animal.species.landRequirement <= availableLand
+        && animal.species.waterRequirement <= availableWater
+        && animal.species.airRequirement <= availableAir
+        && animal.species.temperature <= this.temperature;
   }
 
   @Override

@@ -11,6 +11,7 @@
                 <th scope="col">Land Area(m2)</th>
                 <th scope="col">Water Area(m2)</th>
                 <th scope="col">Air Area(m2)</th>
+                <th scope="col">Temperature(°C)</th>
                 <th scope="col">Animals</th>
                 <th scope="col">Keeper</th>
                 <th scope="col"></th>
@@ -24,6 +25,7 @@
                     <td>@p.landArea</td>
                     <td>@p.waterArea</td>
                     <td>@p.airArea</td>
+                    <td>@p.temperature</td>
                     <td>@p.animals.size</td>
                     @if(p.keeper == null) {
                         <td class="text-danger">No Keeper Assigned</td>

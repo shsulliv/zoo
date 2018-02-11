@@ -15,7 +15,8 @@ import java.util.UUID;
 
 public final class PenController extends Controller {
   private static final List<String> PEN_TYPES =
-      ImmutableList.of("Dry", "Aquarium", "Aviary", "Hybrid", "Petting");
+      ImmutableList.of(
+          "Dry", "Aquarium - Salt Water", "Aquarium - Fresh Water", "Aviary", "Hybrid", "Petting");
 
   @Inject private FormFactory formFactory;
 
@@ -36,7 +37,8 @@ public final class PenController extends Controller {
             form.get("pen_type"),
             Double.parseDouble(form.get("pen_land_area")),
             Double.parseDouble(form.get("pen_water_area")),
-            Double.parseDouble(form.get("pen_air_area")));
+            Double.parseDouble(form.get("pen_air_area")),
+            Double.parseDouble(form.get("pen_temperature")));
     pen.save();
     return redirect("/pen");
   }
