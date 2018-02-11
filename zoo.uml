@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="711.0130401234567" y="377.0">models.Pen</node>
+    <node x="0.0" y="932.0">controllers.KeeperController</node>
+    <node x="943.7819444444443" y="0.0">models.Species</node>
+    <node x="433.9631944444443" y="77.0">models.Keeper</node>
+    <node x="1042.197762345679" y="954.0">controllers.AnimalController</node>
+    <node x="309.9999999999999" y="932.0">controllers.PenController</node>
+    <node x="1083.297762345679" y="732.0">models.Animal</node>
+    <node x="411.63194444444434" y="776.5">controllers.UUIDUtils</node>
+    <node x="663.5665123456789" y="987.5">controllers.AutoController</node>
+    <node x="0.0" y="1183.0">controllers.WeatherController</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="models.Species" target="models.Animal">
+      <point x="-93.60000000000002" y="158.5" />
+      <point x="1084.1819444444443" y="357.0" />
+      <point x="1208.7144290123456" y="357.0" />
+      <point x="17.91666666666663" y="-70.0" />
+    </edge>
+    <edge source="controllers.AnimalController" target="models.Pen">
+      <point x="-44.799999999999955" y="-81.0" />
+      <point x="1109.397762345679" y="892.0" />
+      <point x="920.0812499999998" y="892.0" />
+      <point x="920.0812499999998" y="712.0" />
+      <point x="928.7005401234567" y="712.0" />
+      <point x="24.1875" y="147.5" />
+    </edge>
+    <edge source="controllers.AutoController" target="models.Animal">
+      <point x="116.0" y="-47.5" />
+      <point x="953.5665123456789" y="912.0" />
+      <point x="1119.1310956790123" y="912.0" />
+      <point x="-71.66666666666663" y="70.0" />
+    </edge>
+    <edge source="controllers.PenController" target="models.Keeper">
+      <point x="-108.75" y="-103.0" />
+      <point x="346.2499999999999" y="902.0" />
+      <point x="361.0977623456789" y="902.0" />
+      <point x="361.0977623456789" y="357.0" />
+      <point x="520.2131944444443" y="357.0" />
+      <point x="-17.25" y="81.5" />
+    </edge>
+    <edge source="controllers.KeeperController" target="models.Keeper">
+      <point x="-108.75" y="-103.0" />
+      <point x="36.25" y="912.0" />
+      <point x="80.63804012345668" y="912.0" />
+      <point x="80.63804012345668" y="337.0" />
+      <point x="451.2131944444443" y="337.0" />
+      <point x="-86.25" y="81.5" />
+    </edge>
+    <edge source="models.Pen" target="models.Species">
+      <point x="129.0" y="-147.5" />
+      <point x="1033.5130401234567" y="357.0" />
+      <point x="990.5819444444444" y="357.0" />
+      <point x="-187.2" y="158.5" />
+    </edge>
+    <edge source="controllers.AnimalController" target="models.Species">
+      <point x="89.59999999999991" y="-81.0" />
+      <point x="1243.7977623456788" y="912.0" />
+      <point x="1308.797762345679" y="912.0" />
+      <point x="1308.797762345679" y="357.0" />
+      <point x="1364.9819444444443" y="357.0" />
+      <point x="187.20000000000005" y="158.5" />
+    </edge>
+    <edge source="models.Pen" target="models.Animal">
+      <point x="169.3125" y="147.5" />
+      <point x="1073.8255401234567" y="692.0" />
+      <point x="1172.8810956790123" y="692.0" />
+      <point x="-17.91666666666663" y="-70.0" />
+    </edge>
+    <edge source="models.Keeper" target="models.Pen">
+      <point x="86.25" y="81.5" />
+      <point x="623.7131944444443" y="337.0" />
+      <point x="904.5130401234567" y="337.0" />
+      <point x="0.0" y="-147.5" />
+    </edge>
+    <edge source="models.Animal" target="models.Pen">
+      <point x="-89.58333333333337" y="-70.0" />
+      <point x="1101.2144290123456" y="712.0" />
+      <point x="977.0755401234567" y="712.0" />
+      <point x="72.5625" y="147.5" />
+    </edge>
+    <edge source="controllers.PenController" target="controllers.UUIDUtils">
+      <point x="108.75" y="-103.0" />
+      <point x="563.7499999999999" y="912.0" />
+      <point x="534.1319444444443" y="912.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="controllers.AutoController" target="models.Pen">
+      <point x="0.0" y="-47.5" />
+      <point x="837.5665123456789" y="912.0" />
+      <point x="869.4727623456789" y="912.0" />
+      <point x="869.4727623456789" y="712.0" />
+      <point x="880.3255401234567" y="712.0" />
+      <point x="-24.1875" y="147.5" />
+    </edge>
+    <edge source="controllers.AnimalController" target="models.Animal">
+      <point x="44.799999999999955" y="-81.0" />
+      <point x="1198.997762345679" y="902.0" />
+      <point x="1262.4644290123456" y="902.0" />
+      <point x="71.66666666666663" y="70.0" />
+    </edge>
+    <edge source="models.Pen" target="models.Keeper">
+      <point x="-129.0" y="-147.5" />
+      <point x="775.5130401234567" y="347.0" />
+      <point x="589.2131944444443" y="347.0" />
+      <point x="51.75" y="81.5" />
+    </edge>
+    <edge source="controllers.KeeperController" target="controllers.UUIDUtils">
+      <point x="108.75" y="-103.0" />
+      <point x="253.75" y="912.0" />
+      <point x="452.4652777777777" y="912.0" />
+      <point x="-81.66666666666663" y="25.5" />
+    </edge>
+    <edge source="controllers.KeeperController" target="models.Pen">
+      <point x="36.25" y="-103.0" />
+      <point x="181.25" y="902.0" />
+      <point x="102.63804012345668" y="902.0" />
+      <point x="102.63804012345668" y="692.0" />
+      <point x="735.2005401234567" y="692.0" />
+      <point x="-169.3125" y="147.5" />
+    </edge>
+    <edge source="controllers.PenController" target="models.Pen">
+      <point x="-36.25" y="-103.0" />
+      <point x="418.7499999999999" y="902.0" />
+      <point x="390.13194444444434" y="902.0" />
+      <point x="390.13194444444434" y="702.0" />
+      <point x="783.5755401234567" y="702.0" />
+      <point x="-120.9375" y="147.5" />
+    </edge>
+    <edge source="controllers.AutoController" target="models.Keeper">
+      <point x="-116.0" y="-47.5" />
+      <point x="721.5665123456789" y="912.0" />
+      <point x="700.5130401234567" y="912.0" />
+      <point x="700.5130401234567" y="357.0" />
+      <point x="554.7131944444443" y="357.0" />
+      <point x="17.25" y="81.5" />
+    </edge>
+    <edge source="controllers.AnimalController" target="controllers.UUIDUtils">
+      <point x="-89.60000000000002" y="-81.0" />
+      <point x="1064.5977623456788" y="902.0" />
+      <point x="615.7986111111111" y="902.0" />
+      <point x="81.66666666666674" y="25.5" />
+    </edge>
+    <edge source="models.Animal" target="models.Species">
+      <point x="53.75" y="-70.0" />
+      <point x="1244.547762345679" y="712.0" />
+      <point x="1219.9359567901233" y="712.0" />
+      <point x="1219.9359567901233" y="347.0" />
+      <point x="1177.7819444444444" y="347.0" />
+      <point x="0.0" y="158.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5238455715367146" x="706.0" y="650.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>Project Files</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

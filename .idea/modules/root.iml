@@ -164,5 +164,6 @@
     <orderEntry type="library" name="sbt: org.jetbrains:annotations:13.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.jetbrains.kotlin:kotlin-stdlib:1.1.51:jar" level="project" />
     <orderEntry type="library" name="sbt: org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.51:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="sbt: org.scala-lang:scala-compiler:2.12.4:jar" level="project" />
   </component>
 </module>
