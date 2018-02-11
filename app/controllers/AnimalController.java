@@ -43,13 +43,16 @@ public final class AnimalController extends Controller {
   public Result update(UUID id) {
     DynamicForm form = formFactory.form().bindFromRequest();
     Animal animal = Ebean.find(Animal.class).fetch("species").where().idEq(id).findOne();
-    Pen pen = Ebean.find(Pen.class, UUID.fromString(form.get("animal_pen")));
-    if (!pen.hasRoomFor(animal)) {
+    UUID penUuid = UUIDUtils.safeFromString(form.get("animal_pen"));
+    Pen pen = penUuid == null ? null : Ebean.find(Pen.class, penUuid);
+    if (pen != null && !pen.hasRoomFor(animal)) {
       return ok(views.html.animals.edit.render(animal, Ebean.find(Pen.class).findList(), true));
     }
     animal.animalName = form.get("animal_name");
-    animal.pen = pen;
-    animal.save();
+    if (pen != null) {
+      animal.pen = pen;
+      animal.save();
+    }
     return redirect("/animal");
   }
 }

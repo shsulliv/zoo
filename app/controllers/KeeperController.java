@@ -45,17 +45,21 @@ public final class KeeperController extends Controller {
   public Result update(UUID id) {
     DynamicForm form = formFactory.form().bindFromRequest();
     Keeper keeper = Ebean.find(Keeper.class, id);
-    Pen pen = Ebean.find(Pen.class, UUID.fromString(form.get("keeper_pen")));
+    UUID penUuid = UUIDUtils.safeFromString(form.get("keeper_pen"));
+    Pen pen = penUuid == null ? null : Ebean.find(Pen.class, penUuid);
     if (cannotAssign(keeper, pen)) {
       return ok(views.html.keepers.edit.render(keeper, Ebean.find(Pen.class).findList(), true));
     }
     keeper.keeperName = form.get("keeper_name");
-    pen.keeper = keeper;
-    pen.save();
+    keeper.save();
+    if (pen != null) {
+      pen.keeper = keeper;
+      pen.save();
+    }
     return redirect("/keeper");
   }
 
   private boolean cannotAssign(Keeper keeper, Pen pen) {
-    return !keeper.penType.equals(pen.penType);
+    return pen != null && !keeper.penType.equals(pen.penType);
   }
 }
