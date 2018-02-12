@@ -1,5 +1,7 @@
 # --- !Ups
 
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 ALTER TABLE species
   ALTER COLUMN id SET DEFAULT uuid_generate_v1();
 
@@ -26,3 +28,9 @@ VALUES ('Hippo', 'Hybrid', FALSE, 10, 20, 0, 30);
 
 INSERT INTO species (species_name, pen_type, is_petting, land_requirement, water_requirement, air_requirement, temperature)
 VALUES ('Cat', 'Petting', TRUE, 4, 0, 0, 20);
+
+# --- !Downs
+
+DELETE FROM species;
+
+DROP EXTENSION IF EXISTS "uuid-ossp";
